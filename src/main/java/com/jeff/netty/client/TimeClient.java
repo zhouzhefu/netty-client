@@ -31,13 +31,14 @@ public class TimeClient {
 
             @Override
             protected void initChannel(SocketChannel ch) throws Exception {
-                ch.pipeline().addLast(new TimeClientHandler());
+                ch.pipeline().addLast(new TimeClientDecoder(), new TimeClientHandler());
                 System.out.println("Client channel initiated.");
             }
              
          });
         
         f = b.connect("localhost", 8080).sync();
+        //f = b.connect("localhost", 8080).sync(); //try 2nd time connection
         System.out.println("Port binded");
         
         
