@@ -31,7 +31,7 @@ public class TimeClient {
 
             @Override
             protected void initChannel(SocketChannel ch) throws Exception {
-                ch.pipeline().addLast(new TimeClientDecoder(), new TimeClientHandler());
+                ch.pipeline().addLast(new TimeClientPojoDecoder(), new TimeClientPojoHandler());
                 System.out.println("Client channel initiated.");
             }
              
